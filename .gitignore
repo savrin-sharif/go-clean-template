@@ -1,0 +1,31 @@
+# Binaries
+/bin/
+/dist/
+/build/
+*.exe
+*.dll
+*.so
+*.dylib
+/server
+
+# Go artifacts
+*.test
+*.out
+coverage.txt
+coverage.html
+
+# IDE/editor
+.vscode/
+.idea/
+.DS_Store
+
+# Modules
+vendor/
+
+# Env files (keep examples)
+.env
+.env.local
+.env.*.local
+
+# Init output scratch
+.tmp/

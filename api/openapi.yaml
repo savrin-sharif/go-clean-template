@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: Go Clean Template API
+  version: 1.0.0
+  description: Minimal OpenAPI surface for the health and welcome endpoints.
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      summary: Liveness probe
+      operationId: getHealth
+      responses:
+        "200":
+          description: Service is alive
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthEnvelope"
+  /api/v1/welcome:
+    get:
+      summary: Welcome payload
+      operationId: getWelcome
+      responses:
+        "200":
+          description: Welcome information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WelcomeEnvelope"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "500":
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+components:
+  schemas:
+    HealthEnvelope:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+              example: ok
+    WelcomeEnvelope:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            app_name:
+              type: string
+            environment:
+              type: string
+            message:
+              type: string
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            kind:
+              type: string
+            message:
+              type: string
+            field_errors:
+              type: object
+              additionalProperties:
+                type: string
