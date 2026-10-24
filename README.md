@@ -1,9 +1,8 @@
 # Go Clean Template
 
 A deliberately small, production-minded Go REST API starter using feature-first
-clean architecture. It is the server-side counterpart of the Flutter BLoC
-template: one composition root, typed errors, an interactive generator, and
-agent instructions that keep generated projects consistent.
+clean architecture: one composition root, typed errors, an interactive
+generator, and agent instructions that keep generated projects consistent.
 
 ## Included
 

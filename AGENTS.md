@@ -192,7 +192,7 @@ For create/update/delete success:
 
 ## HTTP and middleware rules
 
-- BLoC/UI concepts do not apply. Handlers stay thin.
+- Handlers stay thin: decode, call a use case, map the result to HTTP.
 - Validate local request syntax in handlers or a small decoder helper; domain
   validates business rules.
 - Never show user-facing side effects (emails, pushes) inside repositories
@@ -202,10 +202,10 @@ For create/update/delete success:
   needed (idempotency keys, unique constraints).
 - Ask for confirmation is a client concern; the API still enforces authorization.
 
-## Typography / frontend
+## Frontend
 
-This is an API template. Do not add Flutter, HTML UI kits, or SPA frameworks
-unless the user explicitly requests a separate frontend.
+This is an API template. Do not add HTML UI kits or SPA frameworks unless the
+user explicitly requests a separate frontend.
 
 ## Dependency injection and routing
 
