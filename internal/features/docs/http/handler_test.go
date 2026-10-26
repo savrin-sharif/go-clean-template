@@ -46,6 +46,9 @@ func TestLandingReturnsHTML(t *testing.T) {
 	if !strings.Contains(body, "/docs") {
 		t.Fatalf("body missing docs link: %s", body)
 	}
+	if !strings.Contains(body, "Built with Go") {
+		t.Fatalf("body missing Built with Go caption: %s", body)
+	}
 }
 
 func TestDocsReturnsHTML(t *testing.T) {

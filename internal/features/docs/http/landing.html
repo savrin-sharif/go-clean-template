@@ -68,8 +68,16 @@
       color: var(--muted);
       font-size: 1.05rem;
       line-height: 1.55;
-      margin-bottom: 2rem;
+      margin-bottom: 0.65rem;
       animation: rise 0.7s ease-out 0.16s both;
+    }
+
+    .stack {
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: rgba(143, 163, 153, 0.75);
+      margin-bottom: 2rem;
+      animation: rise 0.7s ease-out 0.2s both;
     }
 
     .actions {
@@ -113,6 +121,7 @@
     <div class="env">{{.Environment}}</div>
     <h1>{{.AppName}}</h1>
     <p>Clean-architecture REST API. Explore interactive docs or hit the live JSON endpoints.</p>
+    <p class="stack">Built with Go</p>
     <div class="actions">
       <a class="primary" href="/docs">Open API docs</a>
       <a href="/health">/health</a>
