@@ -363,5 +363,5 @@ Next steps:
   1) cd ${PROJECT_NAME}
   2) Review .env
   3) make run
-  4) Visit http://localhost:${HTTP_PORT}/health and /api/v1/welcome
+  4) Visit http://localhost:${HTTP_PORT}/ and /docs
 EOF

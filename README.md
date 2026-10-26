@@ -13,6 +13,8 @@ generator, and agent instructions that keep generated projects consistent.
 - `slog` logging with redaction for tokens, passwords, secrets, and cookies
 - Single composition root in `internal/app`
 - Sample `welcome` feature proving the full vertical slice
+- HTML welcome page at `/` and interactive Swagger UI at `/docs`
+- Embedded OpenAPI contract served at `/openapi.yaml`
 - Optional Postgres wiring (`pgx`) without requiring a database to run
 - Makefile, multi-stage Dockerfile, and docker compose
 - `AGENTS.md` for AI coding agents
@@ -58,6 +60,9 @@ NEW_MODULE=github.com/you/my-service ./scripts/go-clean-init.sh
 cp .env.example .env
 make tidy
 make run
+# http://localhost:8080/          HTML welcome page
+# http://localhost:8080/docs      interactive Swagger UI
+# http://localhost:8080/openapi.yaml
 # http://localhost:8080/health
 # http://localhost:8080/api/v1/welcome
 ```
@@ -87,13 +92,14 @@ internal/
 ├── logging/                # slog setup and redaction
 ├── httpserver/             # Server, middleware, JSON helpers
 └── features/
+    ├── docs/http/          # Welcome page + Swagger UI
     ├── health/http/        # Liveness endpoint
     └── welcome/
         ├── domain/         # Entity, repository contract, use case
         ├── data/           # Local and optional Postgres repositories
         └── http/           # Handlers and route registration
 scripts/go-clean-init.sh
-api/openapi.yaml
+api/openapi.yaml            # OpenAPI contract (also embedded)
 AGENTS.md
 ```
 

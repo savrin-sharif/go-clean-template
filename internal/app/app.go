@@ -11,6 +11,7 @@ import (
 	_ "github.com/jackc/pgx/v5/stdlib"
 
 	"github.com/savrin-sharif/go-clean-template/internal/config"
+	docshttp "github.com/savrin-sharif/go-clean-template/internal/features/docs/http"
 	healthhttp "github.com/savrin-sharif/go-clean-template/internal/features/health/http"
 	welcomedata "github.com/savrin-sharif/go-clean-template/internal/features/welcome/data"
 	"github.com/savrin-sharif/go-clean-template/internal/features/welcome/domain"
@@ -44,7 +45,7 @@ func New(cfg config.Config) (*App, error) {
 	getWelcome := domain.NewGetWelcomeInfo(welcomeRepo)
 
 	engine := httpserver.NewEngine(cfg, log)
-	registerRoutes(engine, getWelcome)
+	registerRoutes(engine, cfg, getWelcome)
 
 	server := httpserver.New(cfg, log, engine)
 
@@ -63,7 +64,8 @@ func buildWelcomeRepository(cfg config.Config, db *sql.DB) domain.Repository {
 	return welcomedata.NewLocalRepository(cfg)
 }
 
-func registerRoutes(engine *gin.Engine, getWelcome *domain.GetWelcomeInfo) {
+func registerRoutes(engine *gin.Engine, cfg config.Config, getWelcome *domain.GetWelcomeInfo) {
+	docshttp.NewHandler(cfg).Register(engine)
 	healthhttp.NewHandler().Register(engine)
 
 	api := engine.Group("/api/v1")

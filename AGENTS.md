@@ -204,8 +204,10 @@ For create/update/delete success:
 
 ## Frontend
 
-This is an API template. Do not add HTML UI kits or SPA frameworks unless the
-user explicitly requests a separate frontend.
+This is an API template. The embedded HTML welcome page (`/`) and Swagger UI
+(`/docs`) are intentional and should be kept in sync with `api/openapi.yaml`.
+Do not add HTML UI kits or SPA frameworks unless the user explicitly requests a
+separate frontend.
 
 ## Dependency injection and routing
 
